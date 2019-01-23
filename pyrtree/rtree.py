@@ -247,7 +247,7 @@ class _NodeCursor(object):
         memo = {}
 
         clusterings = [ k_means_cluster(self.root,k,s_children) for k in range(2,MAX_KMEANS) ]
-        score,bestcluster = max( [ (silhouette_coeff(c,memo),c) for c in clusterings ])
+        score,bestcluster = max( [ (silhouette_coeff(c,memo),c) for c in clusterings ], key=lambda x:x[0])
 
         nodes = [ _NodeCursor.create_with_children(c,self.root) for c in bestcluster if len(c) > 0]
 
