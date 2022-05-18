@@ -25,12 +25,12 @@ if __name__ == "__main__":
     gc.disable() # FFFFUUUUUUUUUUU
     G = RectangleGen()
     rt = RTree()
-    start = time.clock()
-    interval_start = time.clock()
+    start = time.process_time()
+    interval_start = time.process_time()
     for v in range(ITER):
         if 0 == (v % INTERVAL):
             # interval time taken, total time taken, # rects, cur max depth
-            t = time.clock()
+            t = time.process_time()
             
             dt = t - interval_start
             print("%d,%s,%f" % (v, "itime_t", dt))
@@ -44,7 +44,7 @@ if __name__ == "__main__":
             #print("%d,%s,%d" % (v, "max_depth", rt.node.max_depth()))
             #print("%d,%s,%d" % (v, "mean_depth", rt.node.mean_depth()))
 
-            interval_start = time.clock()
+            interval_start = time.process_time()
         o = TstO(G.rect(0.000001))
         rt.insert(v,o.rect)
 
